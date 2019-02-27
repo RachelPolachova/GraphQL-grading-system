@@ -1,0 +1,148 @@
+STUDENTS:
+
+// all students
+query {
+  students {
+    id,
+    name
+  }
+}
+
+// one student
+query {
+  student(id: 2) {
+    id,
+    name
+  }
+}
+
+// create student
+mutation {
+  createStudent(id: "4", name:"created student", address:"created address") {
+    success
+  }
+}
+
+// delete student
+mutation {
+  deleteStudent(id: "2") {
+    success
+  }
+}
+
+// update student
+mutation {
+  updateStudent(id: "4", name:"updated name", class:"new class") {
+    success
+  }
+}
+
+COURSES:
+
+// one course
+query {
+  course(id: "2") {
+    id, name, description
+  }
+}
+
+// all courses
+query {
+  courses {
+    id, name, description
+  }
+}
+
+// create 
+
+mutation {
+  createCourse(id:"2", name:"new course", description: "blah") {
+    success
+  }
+}
+
+// delete 
+
+mutation {
+	deleteCourse(id:"2") {
+    success
+  }
+}
+
+// update
+
+mutation {
+	updateCourse(id:"1", name:"changed") {
+    success
+  }
+}
+
+GRADES:
+
+// all
+
+query {
+  grades {
+    courseId,
+    students {
+      studentId,
+      grade
+		}
+  }
+}
+
+// current grade course
+
+query {
+  grade(courseId: "1") {
+    courseId,
+    students {
+      studentId,
+      grade
+		}
+  }
+}
+
+// create grades of one course and multiple students
+
+mutation {
+	createGrade(
+    courseId:"5", 
+    students:[
+      {
+        studentId: "1", grade: 1
+      }, 
+      {
+        studentId: "5", grade: 9
+      }
+    ]
+  ) 
+  {
+    success
+  }
+}
+
+// delete whole course from grading system
+
+mutation {
+  deleteCourseGrade(courseId: "1") {
+    success
+  }
+}
+
+// delete student from course in grading system
+mutation {
+  deleteStudentFromCourseGrade(courseId: "2", studentId: "1") {
+    success
+  }
+}
+
+// update students grade in current course 
+
+mutation {
+  updateGrade(courseId: "2", studentId: "9", studentGrade: 3) {
+    success
+  }
+}
+
+
