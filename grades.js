@@ -10,8 +10,6 @@ const schema = gql`
     createGrade(
       courseId: ID!,
       students: [CreateStudentInput],
-      # studentId: ID,
-      # studentGrade: Int,
       ): NewGradeResponse!,
       deleteCourseGrade(courseId: ID!): DeleteCourseGradeResponse!,
       deleteStudentFromCourseGrade(courseId: ID, studentId: ID): DeleteStudentResponse!,
